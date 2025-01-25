@@ -1,0 +1,140 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "homepage.fullname" . }}
+  labels:
+    {{- include "homepage.labels" . | nindent 4 }}
+spec:
+  {{- if not .Values.autoscaling.enabled }}
+  replicas: {{ .Values.replicaCount }}
+  {{- end }}
+  selector:
+    matchLabels:
+      {{- include "homepage.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      {{- with .Values.podAnnotations }}
+      annotations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      labels:
+        {{- include "homepage.labels" . | nindent 8 }}
+        {{- with .Values.podLabels }}
+        {{- toYaml . | nindent 8 }}
+        {{- end }}
+    spec:
+      {{- with .Values.hostAliases }}
+      hostAliases:
+        {{- toYaml . | nindent 6 }}
+      {{- end }}
+      {{- with .Values.dnsConfig }}
+      dnsConfig:
+        {{- toYaml . | nindent 6 }}
+      {{- end }}
+      {{- with .Values.imagePullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      serviceAccountName: {{ include "homepage.serviceAccountName" . }}
+      securityContext:
+        {{- toYaml .Values.podSecurityContext | nindent 8 }}
+      containers:
+        - name: {{ .Chart.Name }}
+          securityContext:
+            {{- toYaml .Values.securityContext | nindent 12 }}
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          ports:
+            - name: http
+              containerPort: {{ .Values.service.port }}
+              protocol: TCP
+          livenessProbe:
+            {{- toYaml .Values.livenessProbe | nindent 12 }}
+          readinessProbe:
+            {{- toYaml .Values.readinessProbe | nindent 12 }}
+          resources:
+            {{- toYaml .Values.resources | nindent 12 }}
+          volumeMounts:
+            - name: widgets
+              mountPath: "/config/widgets.yaml"
+              subPath: widgets.yaml
+            - name: services
+              mountPath: "/config/services.yaml"
+              subPath: services.yaml
+            - name: bookmarks
+              mountPath: "/config/bookmarks.yaml"
+              subPath: bookmarks.yaml
+            - name: settings
+              mountPath: "/config/settings.yaml"
+              subPath: settings.yaml
+            - name: kubernetes
+              mountPath: "/config/kubernetes.yaml"
+              subPath: kubernetes.yaml
+            - name: custom-css
+              mountPath: "/config/custom.css"
+              subPath: custom.css
+            - name: custom-js
+              mountPath: "/config/custom.js"
+              subPath: custom.js
+          {{- with .Values.volumeMounts }}
+            {{- toYaml . | nindent 12 }}
+          {{- end }}
+      volumes:
+        - name: widgets
+          configMap:
+            name:  {{ template "homepage.fullname" . }}-widgets
+            items:
+              - key: widgets.yaml
+                path: widgets.yaml
+        - name: services
+          configMap:
+            name:  {{ template "homepage.fullname" . }}-services
+            items:
+              - key: services.yaml
+                path: services.yaml
+        - name: bookmarks
+          configMap:
+            name:  {{ template "homepage.fullname" . }}-bookmarks
+            items:
+              - key: bookmarks.yaml
+                path: bookmarks.yaml
+        - name: settings
+          configMap:
+            name:  {{ template "homepage.fullname" . }}-settings
+            items:
+              - key: settings.yaml
+                path: settings.yaml
+        - name: kubernetes
+          configMap:
+            name:  {{ template "homepage.fullname" . }}-kubernetes
+            items:
+              - key: kubernetes.yaml
+                path: kubernetes.yaml
+        - name: custom-css
+          configMap:
+            name:  {{ template "homepage.fullname" . }}-custom-css
+            items:
+              - key: custom.css
+                path: custom.css
+        - name: custom-js
+          configMap:
+            name:  {{ template "homepage.fullname" . }}-custom-js
+            items:
+              - key: custom.js
+                path: custom.js
+      {{- with .Values.volumes }}
+
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}

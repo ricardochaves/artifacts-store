@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ template "homepage.fullname" . }}-settings
+  labels:
+    app: {{ template "homepage.name" . }}
+    chart: {{ template "homepage.chart" . }}
+    release: {{ .Release.Name }}
+    heritage: {{ .Release.Service }}
+data:
+  settings.yaml: {{ quote .Values.configmap.config.settings }}
