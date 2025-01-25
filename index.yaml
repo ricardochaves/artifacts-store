@@ -3,6 +3,16 @@ entries:
   fin:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2025-01-25T21:23:13.543471481Z"
+    description: A Helm chart for Kubernetes
+    digest: 9014440672d89af5a4b8b219d5618b9765c43ed474b391ec3de6e0c2782dd2da
+    name: fin
+    type: application
+    urls:
+    - https://github.com/ricardochaves/artifacts-store/releases/download/fin-1.0.2/fin-1.0.2.tgz
+    version: 1.0.2
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2025-01-25T20:50:39.969959897Z"
     description: A Helm chart for Kubernetes
     digest: 916f5ce15ff630ae14b7878b3a0e592a96085956b649326337fa3cdba195ecf6
@@ -14,6 +24,16 @@ entries:
   firefox-browser:
   - apiVersion: v2
     appVersion: v24.04.1
+    created: "2025-01-25T21:23:13.710023671Z"
+    description: A Helm chart for Kubernetes
+    digest: 68ad07926fe617301846d2aafa674c6fb345f6b84e44f876fd417607bb34e33a
+    name: firefox-browser
+    type: application
+    urls:
+    - https://github.com/ricardochaves/artifacts-store/releases/download/firefox-browser-1.0.3/firefox-browser-1.0.3.tgz
+    version: 1.0.3
+  - apiVersion: v2
+    appVersion: v24.04.1
     created: "2025-01-25T20:50:40.054677539Z"
     description: A Helm chart for Kubernetes
     digest: 7faefc86ae46fab645118e2681d8587e594e886ae52c7d3a22907b040ff42416
@@ -23,6 +43,16 @@ entries:
     - https://github.com/ricardochaves/artifacts-store/releases/download/firefox-browser-1.0.2/firefox-browser-1.0.2.tgz
     version: 1.0.2
   homepage:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2025-01-25T21:23:13.872834732Z"
+    description: A Helm chart for Kubernetes
+    digest: 43bd3d1ddd62212e3f2eae0c2987dea0db199f3078e9ab43be19604b3dc3dbc9
+    name: homepage
+    type: application
+    urls:
+    - https://github.com/ricardochaves/artifacts-store/releases/download/homepage-1.0.2/homepage-1.0.2.tgz
+    version: 1.0.2
   - apiVersion: v2
     appVersion: 1.16.0
     created: "2025-01-25T20:50:40.1495831Z"
@@ -53,4 +83,4 @@ entries:
     urls:
     - https://github.com/ricardochaves/artifacts-store/releases/download/pihole-2.26.2/pihole-2.26.2.tgz
     version: 2.26.2
-generated: "2025-01-25T20:50:40.149594812Z"
+generated: "2025-01-25T21:23:13.872850742Z"
