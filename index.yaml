@@ -1,5 +1,38 @@
 apiVersion: v1
 entries:
+  fin:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2025-01-25T20:50:39.969959897Z"
+    description: A Helm chart for Kubernetes
+    digest: 916f5ce15ff630ae14b7878b3a0e592a96085956b649326337fa3cdba195ecf6
+    name: fin
+    type: application
+    urls:
+    - https://github.com/ricardochaves/artifacts-store/releases/download/fin-1.0.1/fin-1.0.1.tgz
+    version: 1.0.1
+  firefox-browser:
+  - apiVersion: v2
+    appVersion: v24.04.1
+    created: "2025-01-25T20:50:40.054677539Z"
+    description: A Helm chart for Kubernetes
+    digest: 7faefc86ae46fab645118e2681d8587e594e886ae52c7d3a22907b040ff42416
+    name: firefox-browser
+    type: application
+    urls:
+    - https://github.com/ricardochaves/artifacts-store/releases/download/firefox-browser-1.0.2/firefox-browser-1.0.2.tgz
+    version: 1.0.2
+  homepage:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2025-01-25T20:50:40.1495831Z"
+    description: A Helm chart for Kubernetes
+    digest: fcc9ed7f3d24d7c31a5d152b0d02a3528ca63da9e30d5c7828adf68f280b7343
+    name: homepage
+    type: application
+    urls:
+    - https://github.com/ricardochaves/artifacts-store/releases/download/homepage-1.0.1/homepage-1.0.1.tgz
+    version: 1.0.1
   pihole:
   - apiVersion: v1
     appVersion: 2024.07.0
@@ -20,4 +53,4 @@ entries:
     urls:
     - https://github.com/ricardochaves/artifacts-store/releases/download/pihole-2.26.2/pihole-2.26.2.tgz
     version: 2.26.2
-generated: "2024-11-24T16:43:08.664145954Z"
+generated: "2025-01-25T20:50:40.149594812Z"
