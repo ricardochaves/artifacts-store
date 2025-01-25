@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ template "homepage.fullname" . }}-kubernetes
+  labels:
+    app: {{ template "homepage.name" . }}
+    chart: {{ template "homepage.chart" . }}
+    release: {{ .Release.Name }}
+    heritage: {{ .Release.Service }}
+data:
+  kubernetes.yaml: {{ quote .Values.configmap.config.kubernetes }}
