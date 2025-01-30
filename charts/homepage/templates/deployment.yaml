@@ -13,8 +13,15 @@ spec:
       {{- include "homepage.selectorLabels" . | nindent 6 }}
   template:
     metadata:
-      {{- with .Values.podAnnotations }}
       annotations:
+        checksum/configmap-bookmarks: {{ include (print $.Template.BasePath "/configmap-bookmarks.yaml") . | sha256sum }}
+        checksum/configmap-custom-css: {{ include (print $.Template.BasePath "/configmap-custom-css.yaml") . | sha256sum }}
+        checksum/configmap-custom-js: {{ include (print $.Template.BasePath "/configmap-custom-js.yaml") . | sha256sum }}
+        checksum/configmap-kubernetes: {{ include (print $.Template.BasePath "/configmap-kubernetes.yaml") . | sha256sum }}
+        checksum/configmap-services: {{ include (print $.Template.BasePath "/configmap-services.yaml") . | sha256sum }}
+        checksum/configmap-settings: {{ include (print $.Template.BasePath "/configmap-settings.yaml") . | sha256sum }}
+        checksum/configmap-widgets: {{ include (print $.Template.BasePath "/configmap-widgets.yaml") . | sha256sum }}
+        {{- with .Values.podAnnotations }}
         {{- toYaml . | nindent 8 }}
       {{- end }}
       labels:
