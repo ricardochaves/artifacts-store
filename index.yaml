@@ -45,6 +45,16 @@ entries:
   homepage:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2025-01-31T10:53:34.512961446Z"
+    description: A Helm chart for Kubernetes
+    digest: 62df2aa6c69c038d2399322637997e08fa787137af7d3bf464e6daf10198a329
+    name: homepage
+    type: application
+    urls:
+    - https://github.com/ricardochaves/artifacts-store/releases/download/homepage-1.0.4/homepage-1.0.4.tgz
+    version: 1.0.4
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2025-01-30T23:24:15.655819754Z"
     description: A Helm chart for Kubernetes
     digest: 6ae83e67dfcd0b6a95092c11942496048794d6bb02722fc62242711f812f7a56
@@ -93,4 +103,4 @@ entries:
     urls:
     - https://github.com/ricardochaves/artifacts-store/releases/download/pihole-2.26.2/pihole-2.26.2.tgz
     version: 2.26.2
-generated: "2025-01-30T23:24:15.65583914Z"
+generated: "2025-01-31T10:53:34.512980912Z"
