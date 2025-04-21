@@ -1,0 +1,30 @@
+# Caminho onde estão os charts
+chart-dirs:
+  - charts
+
+# Caminhos a ignorar (ex: charts arquivados ou experimentais)
+excluded-charts:
+  # - charts/chart-inativo
+
+# Caminho do diretório de charts após build (usado por chart-releaser)
+charts-repo: charts
+
+# Habilita teste de instalação usando Helm (ct install)
+helm-extra-args: --timeout 5m
+
+# Nome do release para instalar nos testes (random evita conflitos)
+release-label: chart-testing
+
+# Namespace que será criado temporariamente para instalar o chart
+namespace: chart-testing
+
+# Usar helm upgrade --install (mais realista)
+upgrade: true
+
+# Remover charts após o teste
+cleanup: true
+
+# Não exigir testes de helm unittest (caso não esteja usando)
+validate-maintainers: false
+validate-chart-schema: true
+validate-yaml: true
