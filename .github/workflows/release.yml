@@ -6,6 +6,7 @@ on:
       - main
     paths:
       - 'charts/**'
+  workflow_dispatch:
 
 jobs:
   lint-and-test:
@@ -20,10 +21,12 @@ jobs:
         uses: azure/setup-helm@v4
 
       - name: Install chart-testing
-        uses: helm/chart-testing-action@v2.4.0
+        uses: helm/chart-testing-action@v2.7.0
 
       - name: Run chart-testing (lint)
-        run: ct lint --all
+        run: ct lint --all --config ct.yaml
+        with:
+          changed: true
 
       - name: Run chart-testing (install)
         run: ct install --charts $(ct list-changed)
