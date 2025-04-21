@@ -24,12 +24,10 @@ jobs:
         uses: helm/chart-testing-action@v2.7.0
 
       - name: Run chart-testing (lint)
-        run: ct lint --all --config ct.yaml
-        with:
-          changed: true
+        run: ct lint --all --config ct.yaml --target-branch main
 
       - name: Run chart-testing (install)
-        run: ct install --charts $(ct list-changed)
+        run: ct install --config ct.yaml --target-branch main
 
   release:
     needs: lint-and-test
